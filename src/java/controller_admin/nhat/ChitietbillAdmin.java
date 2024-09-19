@@ -6,7 +6,6 @@ package controller_admin.nhat;
 
 import com.google.gson.Gson;
 import dao.BillDAO;
-import dao.ProductDetailDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -16,7 +15,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Bill;
-import model.ProductDetail;
 
 /**
  *
@@ -70,7 +68,7 @@ public class ChitietbillAdmin extends HttpServlet {
         Gson json = new Gson();
         String idBill_raw = request.getParameter("idBill");
         int idBill = Integer.parseInt(idBill_raw);
-        ProductDetailDAO productDetailDAO = new ProductDetailDAO();
+//        ProductDetailDAO productDetailDAO = new ProductDetailDAO();
         BillDAO billDAO = new BillDAO();
         Bill bill = billDAO.getBillByID(idBill);
         int deposit=0;
@@ -92,14 +90,16 @@ public class ChitietbillAdmin extends HttpServlet {
             request.setAttribute("bookerName", bill.getRegisteredFootballField().getName());
             request.setAttribute("phone", bill.getRegisteredFootballField().getPhoneNumber());
             
-        } else if(bill.getStudySchedule()!=null){
-            request.setAttribute("tenSan", bill.getStudySchedule().getFootballFieldSchedule().getFootballField().getName());
-            request.setAttribute("loaiSan", bill.getStudySchedule().getFootballFieldSchedule().getFootballField().getTypeofFootballField());
-            request.setAttribute("startTime", bill.getStudySchedule().getFootballFieldSchedule().getStartTime());
-            request.setAttribute("endTime", bill.getStudySchedule().getFootballFieldSchedule().getEndTime());
-            request.setAttribute("priceFF", bill.getStudySchedule().getFootballFieldSchedule().getFootballField().getPrice());
-            request.setAttribute("bookerName", "Tên khóa học");
-        }else if(bill.getScheduleTournament()!=null){
+        }
+//        else if(bill.getStudySchedule()!=null){
+//            request.setAttribute("tenSan", bill.getStudySchedule().getFootballFieldSchedule().getFootballField().getName());
+//            request.setAttribute("loaiSan", bill.getStudySchedule().getFootballFieldSchedule().getFootballField().getTypeofFootballField());
+//            request.setAttribute("startTime", bill.getStudySchedule().getFootballFieldSchedule().getStartTime());
+//            request.setAttribute("endTime", bill.getStudySchedule().getFootballFieldSchedule().getEndTime());
+//            request.setAttribute("priceFF", bill.getStudySchedule().getFootballFieldSchedule().getFootballField().getPrice());
+//            request.setAttribute("bookerName", "Tên khóa học");
+//        }
+            else if(bill.getScheduleTournament()!=null){
             request.setAttribute("tenSan", bill.getScheduleTournament().getFootballFieldSchedule().getFootballField().getName());
             request.setAttribute("loaiSan", bill.getScheduleTournament().getFootballFieldSchedule().getFootballField().getTypeofFootballField());
             request.setAttribute("startTime", bill.getScheduleTournament().getFootballFieldSchedule().getStartTime());
@@ -108,8 +108,8 @@ public class ChitietbillAdmin extends HttpServlet {
             request.setAttribute("bookerName", "Tên giải đấu");
         }
         
-        List<ProductDetail> listProductDetail = productDetailDAO.getProductDetailByIDBill(idBill);
-        request.setAttribute("listProductDT", listProductDetail);
+//        List<ProductDetail> listProductDetail = productDetailDAO.getProductDetailByIDBill(idBill);
+//        request.setAttribute("listProductDT", listProductDetail);
         request.setAttribute("bill", bill);    
         request.setAttribute("totalBill", deposit+bill.getTotalPrice());
         request.getRequestDispatcher("chitiethoadon_nhat.jsp").forward(request, response);

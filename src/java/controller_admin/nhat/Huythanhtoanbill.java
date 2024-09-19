@@ -7,7 +7,7 @@ package controller_admin.nhat;
 import com.google.gson.Gson;
 import dao.RegisteredFootballFieldDAO;
 import dao.ScheduleTournamentDAO;
-import dao.StudyScheduleDAO;
+//import dao.StudyScheduleDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.RegisteredFootballField;
 import model.ScheduleTournament;
-import model.StudySchedule;
+//import model.StudySchedule;
 
 /**
  *
@@ -70,7 +70,7 @@ public class Huythanhtoanbill extends HttpServlet {
         Gson json = new Gson();  
         
         RegisteredFootballFieldDAO rffDAO = new RegisteredFootballFieldDAO();
-        StudyScheduleDAO sSDAO = new StudyScheduleDAO();
+//        StudyScheduleDAO sSDAO = new StudyScheduleDAO();
         ScheduleTournamentDAO sTDAO = new ScheduleTournamentDAO();
         int idDonthanhtoan = Integer.parseInt(request.getParameter("idDon"));
         String typeDonthanhtoan = request.getParameter("loaiDon");
@@ -79,15 +79,16 @@ public class Huythanhtoanbill extends HttpServlet {
             RegisteredFootballField donThanhToan = rffDAO.getRegisteredFootballFielByID(idDonthanhtoan);
             String thongTinHoan = json.toJson(donThanhToan);
             out.println(thongTinHoan);
-        } else if (typeDonthanhtoan.equals("sT")) {
+        } else if(typeDonthanhtoan.equals("sT")) {
             ScheduleTournament donThanhToan = sTDAO.getScheduleTournamentByID(idDonthanhtoan);
             String thongTinHoan = json.toJson(donThanhToan);
             out.println(thongTinHoan);
-        } else {
-            StudySchedule donThanhToan = sSDAO.getStudyScheduleByID(idDonthanhtoan);
-            String thongTinHoan = json.toJson(donThanhToan);
-            out.println(thongTinHoan);
         }
+//        else {
+//            StudySchedule donThanhToan = sSDAO.getStudyScheduleByID(idDonthanhtoan);
+//            String thongTinHoan = json.toJson(donThanhToan);
+//            out.println(thongTinHoan);
+//        }
         out.println("thuy123");
         out.flush();
     }

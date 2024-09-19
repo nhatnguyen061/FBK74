@@ -23,12 +23,8 @@ public class TotalScheduleDAO extends DBContext {
     public List<TotalSchedule> getTotalSchedule(String date) {
         List<TotalSchedule> list = new ArrayList<>();
         RegisteredFootballFieldDAO rffDAO = new RegisteredFootballFieldDAO();
-        StudyScheduleDAO ssDAO = new StudyScheduleDAO();
         ScheduleTournamentDAO stDAO = new ScheduleTournamentDAO();
         String sql = "SELECT IDStudySchedule, NULL AS IDScheduleTournament, NULL AS IDRegisteredFootballField, [Date]\n"
-                + "FROM [dbo].[StudySchedule]\n"
-                + "WHERE [Date] = ? and [status] = 0 \n"
-                + "UNION ALL\n"
                 + "SELECT NULL AS IDStudySchedule, IDScheduleTournament, NULL AS IDRegisteredFootballField, [Date]\n"
                 + "FROM [dbo].[ScheduleTournament]\n"
                 + "WHERE [Date] = ? and status = 0 \n"
@@ -45,11 +41,9 @@ public class TotalScheduleDAO extends DBContext {
             while (rs.next()) {
                 int idRegisteredFootballField = rs.getInt("IDRegisteredFootballField");
                 int idscheduleTournament = rs.getInt("IDScheduleTournament");
-                int idStudySchedule = rs.getInt("IDStudySchedule");
                 TotalSchedule totalSchedule = new TotalSchedule();
                 totalSchedule.setRegisteredFootballField(rffDAO.getRegisteredFootballFielByID(idRegisteredFootballField));
                 totalSchedule.setScheduleTournament(stDAO.getScheduleStounamentFullInfoById(idscheduleTournament));
-                totalSchedule.setStudySchedule(ssDAO.getStudyScheduleByID(idStudySchedule));
                 list.add(totalSchedule);
             }
         } catch (SQLException ex) {

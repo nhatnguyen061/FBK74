@@ -6,10 +6,10 @@ package controller_admin.nhat;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import dao.ProductDAO;
+//import dao.ProductDAO;
 import dao.RegisteredFootballFieldDAO;
 import dao.ScheduleTournamentDAO;
-import dao.StudyScheduleDAO;
+//import dao.StudyScheduleDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -22,18 +22,18 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Product;
+//import model.Product;
 import model.RegisteredFootballField;
 import model.ScheduleTournament;
-import model.StudySchedule;
+//import model.StudySchedule;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import dao.BillDAO;
-import dao.ProductDetailDAO;
+//import dao.ProductDetailDAO;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.servlet.http.HttpSession;
 import model.Bill;
-import model.ProductDetail;
+//import model.ProductDetail;
 import model.User;
 
 /**
@@ -84,7 +84,7 @@ public class ThanhtoanBillServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         RegisteredFootballFieldDAO rffDAO = new RegisteredFootballFieldDAO();
-        StudyScheduleDAO sSDAO = new StudyScheduleDAO();
+//        StudyScheduleDAO sSDAO = new StudyScheduleDAO();
         ScheduleTournamentDAO sTDAO = new ScheduleTournamentDAO();
         int idDonthanhtoan = Integer.parseInt(request.getParameter("idDonthanhtoan"));
         String typeDonthanhtoan = request.getParameter("typeDonthanhtoan");
@@ -97,21 +97,22 @@ public class ThanhtoanBillServlet extends HttpServlet {
             ScheduleTournament donThanhToan = sTDAO.getScheduleStounamentFullInfoById(idDonthanhtoan);
             request.setAttribute("donThanhToan", donThanhToan);
             request.setAttribute("typeDonthanhtoan", typeDonthanhtoan);
-        } else {
-            StudySchedule donThanhToan = sSDAO.getStudyScheduleByID(idDonthanhtoan);
-            request.setAttribute("donThanhToan", donThanhToan);
-            request.setAttribute("typeDonthanhtoan", typeDonthanhtoan);
         }
-        ProductDAO productD = new ProductDAO();
-        List<Product> listProduct = new ArrayList<>();
-        try {
-            listProduct = productD.getAllProducts();
-        } catch (SQLException ex) {
-            Logger.getLogger(ThanhtoanBillServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        else {
+//            StudySchedule donThanhToan = sSDAO.getStudyScheduleByID(idDonthanhtoan);
+//            request.setAttribute("donThanhToan", donThanhToan);
+//            request.setAttribute("typeDonthanhtoan", typeDonthanhtoan);
+//        }
+//        ProductDAO productD = new ProductDAO();
+//        List<Product> listProduct = new ArrayList<>();
+//        try {
+//            listProduct = productD.getAllProducts();
+//        } catch (SQLException ex) {
+//            Logger.getLogger(ThanhtoanBillServlet.class.getName()).log(Level.SEVERE, null, ex);
+//        }
         request.setAttribute("idDonthanhtoan", idDonthanhtoan);
         request.setAttribute("typeDonthanhtoan", typeDonthanhtoan);
-        request.setAttribute("listProduct", listProduct);
+//        request.setAttribute("listProduct", listProduct);
         request.getRequestDispatcher("thanhtoan_nhat.jsp").forward(request, response);
     }
 
@@ -152,7 +153,7 @@ public class ThanhtoanBillServlet extends HttpServlet {
         BillDAO billDAO = new BillDAO();
         RegisteredFootballFieldDAO rffDAO = new RegisteredFootballFieldDAO();
         ScheduleTournamentDAO sTDAO = new ScheduleTournamentDAO();
-        StudyScheduleDAO sSDAO = new StudyScheduleDAO();
+//        StudyScheduleDAO sSDAO = new StudyScheduleDAO();
         Bill bill = new Bill();
         //tong bill
         int toltalPrice =0;
@@ -171,11 +172,12 @@ public class ThanhtoanBillServlet extends HttpServlet {
             bill.setScheduleTournament(sTDAO.getScheduleStounamentFullInfoById(idDonthanhtoan));
             sTDAO.updateStatusScheduleTournament(idDonthanhtoan);
             toltalPrice = sTDAO.getScheduleStounamentFullInfoById(idDonthanhtoan).getFootballFieldSchedule().getFootballField().getPrice();
-        } else {
-            bill.setStudySchedule(sSDAO.getStudyScheduleByID(idDonthanhtoan));
-            toltalPrice = sSDAO.getStudyScheduleByID(idDonthanhtoan).getFootballFieldSchedule().getFootballField().getPrice();
         }
-        bill.setStudySchedule(sSDAO.getStudyScheduleByID(idDonthanhtoan));
+//        else {
+//            bill.setStudySchedule(sSDAO.getStudyScheduleByID(idDonthanhtoan));
+//            toltalPrice = sSDAO.getStudyScheduleByID(idDonthanhtoan).getFootballFieldSchedule().getFootballField().getPrice();
+//        }
+//        bill.setStudySchedule(sSDAO.getStudyScheduleByID(idDonthanhtoan));
         bill.setAccount2(user);
         // Lấy thời gian hiện tại
         Date currentDate = new Date();
@@ -190,25 +192,26 @@ public class ThanhtoanBillServlet extends HttpServlet {
             billDAO.insertBillWithRegisteredFootballField(bill);
         } else if (typeDonthanhtoan.equals("sT")) {
             billDAO.insertBillWithScheduleTournament(bill);
-        } else {
-            billDAO.insertBillWithStudySchedule(bill);
-        }
-        ProductDAO productDAO = new ProductDAO();
-        ProductDetailDAO productDetailDAO = new ProductDetailDAO();
+        } 
+//        else {
+//            billDAO.insertBillWithStudySchedule(bill);
+//        }
+//        ProductDAO productDAO = new ProductDAO();
+//        ProductDetailDAO productDetailDAO = new ProductDetailDAO();
         int lastIndexBill = billDAO.getIDBillLastIndex();
         //tong bill
         
-        for (waterinfo object : waterInfoList) {
-            if(object.getSoLuong()>0){
-                ProductDetail productDetail = new ProductDetail();
-                productDetail.setiDProduct(productDAO.getProductByName(object.getLoaiNuoc()).getId());
-                productDetail.setQuantity(object.getSoLuong());
-                productDetail.setiDBill(lastIndexBill);
-                productDetail.setPrice(object.getGiaTien());
-                productDetailDAO.insertProductDetail(productDetail);
-                toltalPrice+=object.getSoLuong()*object.getGiaTien();
-            }
-        }
+//        for (waterinfo object : waterInfoList) {
+//            if(object.getSoLuong()>0){
+////                ProductDetail productDetail = new ProductDetail();
+////                productDetail.setiDProduct(productDAO.getProductByName(object.getLoaiNuoc()).getId());
+//                productDetail.setQuantity(object.getSoLuong());
+//                productDetail.setiDBill(lastIndexBill);
+//                productDetail.setPrice(object.getGiaTien());
+//                productDetailDAO.insertProductDetail(productDetail);
+//                toltalPrice+=object.getSoLuong()*object.getGiaTien();
+//            }
+//        }
         billDAO.updateIDAccount2(lastIndexBill, user.getIDAccount());
         billDAO.updateTotalPricewwithidBillAndTotalPrice(lastIndexBill, toltalPrice);
         response.sendRedirect("quanlysanbong");

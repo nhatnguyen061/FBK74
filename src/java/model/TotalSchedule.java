@@ -12,15 +12,13 @@ package model;
 public class TotalSchedule {
     private RegisteredFootballField registeredFootballField;
     private ScheduleTournament scheduleTournament;
-    private StudySchedule studySchedule;
 
     public TotalSchedule() {
     }
 
-    public TotalSchedule(RegisteredFootballField registeredFootballField, ScheduleTournament scheduleTournament, StudySchedule studySchedule) {
+    public TotalSchedule(RegisteredFootballField registeredFootballField, ScheduleTournament scheduleTournament) {
         this.registeredFootballField = registeredFootballField;
         this.scheduleTournament = scheduleTournament;
-        this.studySchedule = studySchedule;
     }
 
     public RegisteredFootballField getRegisteredFootballField() {
@@ -39,17 +37,10 @@ public class TotalSchedule {
         this.scheduleTournament = scheduleTournament;
     }
 
-    public StudySchedule getStudySchedule() {
-        return studySchedule;
-    }
-
-    public void setStudySchedule(StudySchedule studySchedule) {
-        this.studySchedule = studySchedule;
-    }
 
     @Override
     public String toString() {
-        return "TotalSchedule{" + "registeredFootballField=" + registeredFootballField + ", scheduleTournament=" + scheduleTournament + ", studySchedule=" + studySchedule + '}';
+        return "TotalSchedule{" + "registeredFootballField=" + registeredFootballField + ", scheduleTournament=" + scheduleTournament + '}';
     }
     
 

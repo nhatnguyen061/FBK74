@@ -5,7 +5,6 @@
 package controller;
 
 import dao.BillDAO;
-import dao.ProductDetailDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -15,7 +14,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Bill;
-import model.ProductDetail;
 
 /**
  *
@@ -64,7 +62,6 @@ public class Chitiethoadon_cus extends HttpServlet {
             throws ServletException, IOException {
         String idBill_raw = request.getParameter("idBill");
         int idBill = Integer.parseInt(idBill_raw);
-        ProductDetailDAO productDetailDAO = new ProductDetailDAO();
         BillDAO billDAO = new BillDAO();
         Bill bill = billDAO.getBillByID(idBill);
         int deposit=0;
@@ -87,8 +84,8 @@ public class Chitiethoadon_cus extends HttpServlet {
             request.setAttribute("phone", bill.getRegisteredFootballField().getPhoneNumber());
             
         }       
-        List<ProductDetail> listProductDetail = productDetailDAO.getProductDetailByIDBill(idBill);
-        request.setAttribute("listProductDT", listProductDetail);
+//        List<ProductDetail> listProductDetail = productDetailDAO.getProductDetailByIDBill(idBill);
+//        request.setAttribute("listProductDT", listProductDetail);
         request.setAttribute("bill", bill);    
         request.setAttribute("totalBill", deposit+bill.getTotalPrice());
         request.getRequestDispatcher("chitiethoadon-cus_nhat.jsp").forward(request, response);
