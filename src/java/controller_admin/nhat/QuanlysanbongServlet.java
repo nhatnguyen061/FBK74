@@ -90,19 +90,23 @@ public class QuanlysanbongServlet extends HttpServlet {
                 } else if (obj1.getRegisteredFootballField() != null && obj2.getScheduleTournament() != null) {
                     return obj1.getRegisteredFootballField().getFootballFieldSchedule().getStartTime()
                             .compareTo(obj2.getScheduleTournament().getFootballFieldSchedule().getStartTime());
-                } else if (obj1.getRegisteredFootballField() != null && obj2.getStudySchedule() != null) {
-                    return obj1.getRegisteredFootballField().getFootballFieldSchedule().getStartTime()
-                            .compareTo(obj2.getStudySchedule().getFootballFieldSchedule().getStartTime());
-                } else if (obj1.getScheduleTournament() != null && obj2.getScheduleTournament() != null) {
-                    return obj1.getScheduleTournament().getFootballFieldSchedule().getStartTime()
-                            .compareTo(obj2.getScheduleTournament().getFootballFieldSchedule().getStartTime());
-                } else if (obj1.getStudySchedule() != null && obj2.getStudySchedule() != null) {
-                    return obj1.getStudySchedule().getFootballFieldSchedule().getStartTime()
-                            .compareTo(obj2.getStudySchedule().getFootballFieldSchedule().getStartTime());
-                } else {
-                    return obj1.getScheduleTournament().getFootballFieldSchedule().getStartTime()
-                            .compareTo(obj2.getStudySchedule().getFootballFieldSchedule().getStartTime());
                 }
+//                else if (obj1.getRegisteredFootballField() != null && obj2.getStudySchedule() != null) {
+//                    return obj1.getRegisteredFootballField().getFootballFieldSchedule().getStartTime()
+//                            .compareTo(obj2.getStudySchedule().getFootballFieldSchedule().getStartTime());
+//                }
+//                else if(obj1.getScheduleTournament() != null && obj2.getScheduleTournament() != null) {
+                else{ return obj1.getScheduleTournament().getFootballFieldSchedule().getStartTime()
+                            .compareTo(obj2.getScheduleTournament().getFootballFieldSchedule().getStartTime());
+                }
+//                else if (obj1.getStudySchedule() != null && obj2.getStudySchedule() != null) {
+//                    return obj1.getStudySchedule().getFootballFieldSchedule().getStartTime()
+//                            .compareTo(obj2.getStudySchedule().getFootballFieldSchedule().getStartTime());
+//                }
+//                else {
+//                    return obj1.getScheduleTournament().getFootballFieldSchedule().getStartTime()
+//                            .compareTo(obj2.getStudySchedule().getFootballFieldSchedule().getStartTime());
+//                }
             }
 
         });
@@ -146,19 +150,22 @@ public class QuanlysanbongServlet extends HttpServlet {
                 } else if (obj1.getRegisteredFootballField() != null && obj2.getScheduleTournament() != null) {
                     return obj1.getRegisteredFootballField().getFootballFieldSchedule().getStartTime()
                             .compareTo(obj2.getScheduleTournament().getFootballFieldSchedule().getStartTime());
-                } else if (obj1.getRegisteredFootballField() != null && obj2.getStudySchedule() != null) {
-                    return obj1.getRegisteredFootballField().getFootballFieldSchedule().getStartTime()
-                            .compareTo(obj2.getStudySchedule().getFootballFieldSchedule().getStartTime());
-                } else if (obj1.getScheduleTournament() != null && obj2.getScheduleTournament() != null) {
-                    return obj1.getScheduleTournament().getFootballFieldSchedule().getStartTime()
-                            .compareTo(obj2.getScheduleTournament().getFootballFieldSchedule().getStartTime());
-                } else if (obj1.getStudySchedule() != null && obj2.getStudySchedule() != null) {
-                    return obj1.getStudySchedule().getFootballFieldSchedule().getStartTime()
-                            .compareTo(obj2.getStudySchedule().getFootballFieldSchedule().getStartTime());
-                } else {
-                    return obj1.getScheduleTournament().getFootballFieldSchedule().getStartTime()
-                            .compareTo(obj2.getStudySchedule().getFootballFieldSchedule().getStartTime());
                 }
+//                else if (obj1.getRegisteredFootballField() != null && obj2.getStudySchedule() != null) {
+//                    return obj1.getRegisteredFootballField().getFootballFieldSchedule().getStartTime()
+//                            .compareTo(obj2.getStudySchedule().getFootballFieldSchedule().getStartTime());
+//                }
+//                else if (obj1.getScheduleTournament() != null && obj2.getScheduleTournament() != null) {
+                else{    return obj1.getScheduleTournament().getFootballFieldSchedule().getStartTime()
+                            .compareTo(obj2.getScheduleTournament().getFootballFieldSchedule().getStartTime());
+                }
+//                else if (obj1.getStudySchedule() != null && obj2.getStudySchedule() != null) {
+//                    return obj1.getStudySchedule().getFootballFieldSchedule().getStartTime()
+//                            .compareTo(obj2.getStudySchedule().getFootballFieldSchedule().getStartTime());
+//                } else {
+//                    return obj1.getScheduleTournament().getFootballFieldSchedule().getStartTime()
+//                            .compareTo(obj2.getStudySchedule().getFootballFieldSchedule().getStartTime());
+//                }
             }
 
         });

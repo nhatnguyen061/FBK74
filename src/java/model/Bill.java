@@ -14,33 +14,30 @@ public class Bill {
     private RegisteredFootballField RegisteredFootballField;
     private RegistFindOpponent RegistFindOpponent;
     private User Account2;
-    private StudySchedule StudySchedule;
     private ScheduleTournament ScheduleTournament;
     private String PaymentDate;
     private int totalPrice;
     public Bill() {
     }
 
-    public Bill(int IDBill, String Invoice, RegisteredFootballField RegisteredFootballField, RegistFindOpponent RegistFindOpponent, User Account2, StudySchedule StudySchedule, ScheduleTournament ScheduleTournament, String PaymentDate, int totalPrice) {
+    public Bill(int IDBill, String Invoice, RegisteredFootballField RegisteredFootballField, RegistFindOpponent RegistFindOpponent, User Account2, ScheduleTournament ScheduleTournament, String PaymentDate, int totalPrice) {
         this.IDBill = IDBill;
         this.Invoice = Invoice;
         this.RegisteredFootballField = RegisteredFootballField;
         this.RegistFindOpponent = RegistFindOpponent;
         this.Account2 = Account2;
-        this.StudySchedule = StudySchedule;
         this.ScheduleTournament = ScheduleTournament;
         this.PaymentDate = PaymentDate;
         this.totalPrice = totalPrice;
     }
     
 
-    public Bill(int IDBill, String Invoice, RegisteredFootballField RegisteredFootballField, RegistFindOpponent RegistFindOpponent, User Account2, StudySchedule StudySchedule, ScheduleTournament ScheduleTournament, String PaymentDate) {
+    public Bill(int IDBill, String Invoice, RegisteredFootballField RegisteredFootballField, RegistFindOpponent RegistFindOpponent, User Account2, ScheduleTournament ScheduleTournament, String PaymentDate) {
         this.IDBill = IDBill;
         this.Invoice = Invoice;
         this.RegisteredFootballField = RegisteredFootballField;
         this.RegistFindOpponent = RegistFindOpponent;
         this.Account2 = Account2;
-        this.StudySchedule = StudySchedule;
         this.ScheduleTournament = ScheduleTournament;
         this.PaymentDate = PaymentDate;
     }
@@ -85,13 +82,6 @@ public class Bill {
         this.Account2 = Account2;
     }
 
-    public StudySchedule getStudySchedule() {
-        return StudySchedule;
-    }
-
-    public void setStudySchedule(StudySchedule StudySchedule) {
-        this.StudySchedule = StudySchedule;
-    }
 
     public ScheduleTournament getScheduleTournament() {
         return ScheduleTournament;

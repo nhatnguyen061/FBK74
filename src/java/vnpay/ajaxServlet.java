@@ -31,7 +31,6 @@ import javax.servlet.http.HttpSession;
 import model.Bill;
 import model.RegisteredFootballField;
 import model.ScheduleTournament;
-import model.StudySchedule;
 import org.apache.http.client.fluent.Request;
 
 /**
