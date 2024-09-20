@@ -166,19 +166,15 @@
                                 <td>Sân ${list[0].footballField.typeofFootballField} người/Đội</td>
                                 <td>${list[0].footballField.price} VNĐ</td>
                                 <td>
-                                    <select class="form-control" >
+                                    <select class="form-control">
                                         <c:forEach var="it" items="${list}">
-                                            <option>${it.startTime} - ${it.endTime}</option>                                      
+                                            <option>${it.startTime} - ${it.endTime}</option>
                                         </c:forEach>
                                     </select>
                                 </td>
                                 <td>
-                                    <button class="btn btn-danger" type="button" onclick ="editSanBong(${list[0].footballField.IDFootballField})">
-                                        Chỉnh sửa
-                                    </button>
-                                    <button class="btn btn-dark" type="button" onclick="deleteSanBong(${list[0].footballField.IDFootballField}, this)">
-                                        Xóa sân bóng
-                                    </button>
+                                    <button class="btn btn-danger" type="button" onclick="editSanBong(${list[0].footballField.IDFootballField})">Chỉnh sửa</button>
+                                    <button class="btn btn-dark" type="button" onclick="deleteSanBong(${list[0].footballField.IDFootballField}, this)">Xóa sân bóng</button>
                                 </td>
                             </tr>
                         </c:forEach>
