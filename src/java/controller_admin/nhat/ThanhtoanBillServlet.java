@@ -141,15 +141,15 @@ public class ThanhtoanBillServlet extends HttpServlet {
         int idDonthanhtoan = Integer.parseInt(request.getParameter("idDonthanhtoan"));
         String typeDonthanhtoan = request.getParameter("typeDonthanhtoan");
         // Lấy thông tin về các loại nước đã thêm
-        String[] selectedWaterInfo = request.getParameterValues("selectedWaterInfo");
-        List<waterinfo> waterInfoList = new ArrayList<>();
-        if (selectedWaterInfo != null) {
-            // Chuyển chuỗi JSON thành danh sách đối tượng WaterInfo
-            java.lang.reflect.Type listType = new TypeToken<List<waterinfo>>() {
-            }.getType();
-             waterInfoList = json.fromJson(selectedWaterInfo[0], listType);
-            // Lặp qua danh sách và lấy thông tin
-        }
+//        String[] selectedWaterInfo = request.getParameterValues("selectedWaterInfo");
+//        List<waterinfo> waterInfoList = new ArrayList<>();
+//        if (selectedWaterInfo != null) {
+//            // Chuyển chuỗi JSON thành danh sách đối tượng WaterInfo
+//            java.lang.reflect.Type listType = new TypeToken<List<waterinfo>>() {
+//            }.getType();
+//             waterInfoList = json.fromJson(selectedWaterInfo[0], listType);
+//            // Lặp qua danh sách và lấy thông tin
+//        }
         BillDAO billDAO = new BillDAO();
         RegisteredFootballFieldDAO rffDAO = new RegisteredFootballFieldDAO();
         ScheduleTournamentDAO sTDAO = new ScheduleTournamentDAO();

@@ -110,7 +110,7 @@
                     <a href="index1.jsp" class="navbar-brand mx-4 mb-3">
                         <h3 class="text-primary">FBK74</h3>
                     </a>
-                   <div class="navbar-nav w-100">
+                    <div class="navbar-nav w-100">
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Quản lý sân bóng</a>
                             <div class="dropdown-menu bg-transparent border-0">
@@ -196,53 +196,35 @@
                         <tbody> 
                             <c:set var="currentTime" value="<%= new java.sql.Time(new java.util.Date().getTime())%>"/>
 
-                            <!--rFF: đánh dấu đó id sân đk, sT: là id lịch giải, sS:id lịch khóa học-->
-                            <c:forEach var="list" items="${requestScope.listTotalSchedule}">
-                                <c:if test="${list.registeredFootballField!=null}">
-                                    <tr id="${list.registeredFootballField.IDRegisteredFootballField}-rFF">
-                                        <td>${list.registeredFootballField.footballFieldSchedule.startTime}-${list.registeredFootballField.footballFieldSchedule.endTime}</td>
-                                        <td>${list.registeredFootballField.footballFieldSchedule.footballField.name}</td>
-                                        <td>${list.registeredFootballField.name}</td>
-                                        <td>${list.registeredFootballField.phoneNumber}</td>
-                                        <td>${list.registeredFootballField.deposit}</td>
-                                        <td>${list.registeredFootballField.footballFieldSchedule.footballField.price}</td>
-                
-                                        <td><a href="thanhtoanbill?idDonthanhtoan=${list.registeredFootballField.IDRegisteredFootballField}&typeDonthanhtoan=rFF" class="btn btn-light">Thanh toán</a>
-                                        </td>
-                                    </tr>
-                                </c:if>
-                                <c:if test="${list.scheduleTournament!=null}">
-                                    <tr id="${list.scheduleTournament.IDScheduleTournament}-sT">
-                                        <td>${list.scheduleTournament.footballFieldSchedule.startTime}-${list.scheduleTournament.footballFieldSchedule.endTime}</td>
-                                        <td>${list.scheduleTournament.footballFieldSchedule.footballField.name}</td>
-                                        <td>Giải đấu ${list.scheduleTournament.tournament.name}</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>${list.scheduleTournament.footballFieldSchedule.footballField.price}</td>
+                        <!--rFF: đánh dấu đó id sân đk, sT: là id lịch giải, sS:id lịch khóa học-->
+                        <c:forEach var="list" items="${requestScope.listTotalSchedule}">
+                            <c:if test="${list.registeredFootballField!=null && list.scheduleTournament==null}">
+                                <tr id="${list.registeredFootballField.IDRegisteredFootballField}-rFF">
+                                    <td>${list.registeredFootballField.footballFieldSchedule.startTime}-${list.registeredFootballField.footballFieldSchedule.endTime}</td>
+                                    <td>${list.registeredFootballField.footballFieldSchedule.footballField.name}</td>
+                                    <td>${list.registeredFootballField.name}</td>
+                                    <td>${list.registeredFootballField.phoneNumber}</td>
+                                    <td>${list.registeredFootballField.deposit}</td>
+                                    <td>${list.registeredFootballField.footballFieldSchedule.footballField.price}</td>
 
-
-                                        
-
-                                        <td><a href="thanhtoanbill?idDonthanhtoan=${list.scheduleTournament.IDScheduleTournament}&typeDonthanhtoan=sT" class="btn btn-light">Thanh toán</a>
-                                        </td>
-                                    </tr>
-                                </c:if>
-                                <c:if test="${list.studySchedule!=null}">
-                                    <tr id="${list.studySchedule.IDStudySchedule}-sS">
-                                        <td>${list.studySchedule.footballFieldSchedule.startTime}-${list.studySchedule.footballFieldSchedule.endTime}</td>
-                                        <td>${list.studySchedule.footballFieldSchedule.footballField.name}</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>${list.studySchedule.footballFieldSchedule.footballField.price}</td>
-                                        
-                                        <td><a href="thanhtoanbill?idDonthanhtoan=${list.studySchedule.IDStudySchedule}&typeDonthanhtoan=sS" class="btn btn-light">Thanh toán</a>                                            
-                                        </td>
-                                    </tr>
-                                </c:if>
-
-                            </c:forEach>
-                            <!-- Add more rows as needed -->
+                                    <td><a href="thanhtoanbill?idDonthanhtoan=${list.registeredFootballField.IDRegisteredFootballField}&typeDonthanhtoan=rFF" class="btn btn-light">Thanh toán</a>
+                                    </td>
+                                </tr>
+                            </c:if>
+                            <c:if test="${list.scheduleTournament!=null && list.registeredFootballField==null}">
+                                <tr id="${list.scheduleTournament.IDScheduleTournament}-sT">
+                                    <td>${list.scheduleTournament.footballFieldSchedule.startTime}-${list.scheduleTournament.footballFieldSchedule.endTime}</td>
+                                    <td>${list.scheduleTournament.footballFieldSchedule.footballField.name}</td>
+                                    <td>Giải đấu ${list.scheduleTournament.tournament.name}</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>${list.scheduleTournament.footballFieldSchedule.footballField.price}</td>                                        
+                                    <td><a href="thanhtoanbill?idDonthanhtoan=${list.scheduleTournament.IDScheduleTournament}&typeDonthanhtoan=sT" class="btn btn-light">Thanh toán</a>
+                                    </td>
+                                </tr>
+                            </c:if>
+                        </c:forEach>
+                        <!-- Add more rows as needed -->
                         </tbody>
                     </table>
                 </div>
@@ -343,7 +325,7 @@
         </div>
 
         <!-- JavaScript Libraries -->
-<!--        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>-->
+        <!--        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
         <script src="lib/chart/chart.min.js"></script>
         <script src="lib/easing/easing.min.js"></script>

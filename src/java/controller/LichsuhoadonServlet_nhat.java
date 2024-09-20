@@ -92,7 +92,7 @@ public class LichsuhoadonServlet_nhat extends HttpServlet {
                         listBill.add(bill);
                     }
                 }
-            }
+            }           
             Collections.reverse(listBill);
             request.setAttribute("listBill", listBill);
             request.getRequestDispatcher("lichsuhoadon_nhat.jsp").forward(request, response);
