@@ -24,19 +24,20 @@ public class TotalScheduleDAO extends DBContext {
         List<TotalSchedule> list = new ArrayList<>();
         RegisteredFootballFieldDAO rffDAO = new RegisteredFootballFieldDAO();
         ScheduleTournamentDAO stDAO = new ScheduleTournamentDAO();
-        String sql = "SELECT IDStudySchedule, NULL AS IDScheduleTournament, NULL AS IDRegisteredFootballField, [Date]\n"
-                + "SELECT NULL AS IDStudySchedule, IDScheduleTournament, NULL AS IDRegisteredFootballField, [Date]\n"
+        String sql = 
+                 "SELECT IDScheduleTournament, NULL AS IDRegisteredFootballField, [Date]\n"
                 + "FROM [dbo].[ScheduleTournament]\n"
                 + "WHERE [Date] = ? and status = 0 \n"
                 + "UNION ALL\n"
-                + "SELECT NULL AS IDStudySchedule, NULL AS IDScheduleTournament, IDRegisteredFootballField, [Date]\n"
+                + "SELECT NULL AS IDScheduleTournament, IDRegisteredFootballField, [Date]\n"
                 + "FROM [dbo].[RegisteredFootballField]\n"
                 + "WHERE [Date] = ? and status = 1;";
+
         try {
             PreparedStatement st = getConnection().prepareStatement(sql);
             st.setString(1, date);
             st.setString(2, date);
-            st.setString(3, date);
+//            st.setString(3, date);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 int idRegisteredFootballField = rs.getInt("IDRegisteredFootballField");
@@ -51,12 +52,13 @@ public class TotalScheduleDAO extends DBContext {
         }
         return list;
     }
+
     public static void main(String[] args) {
         TotalScheduleDAO tsDAO = new TotalScheduleDAO();
         List<TotalSchedule> list = new ArrayList<>();
-        list = tsDAO.getTotalSchedule("2024-03-08");
+        list = tsDAO.getTotalSchedule("2024-09-20");
         for (TotalSchedule totalSchedule : list) {
-            System.out.println(totalSchedule.getScheduleTournament());
+            System.out.println(totalSchedule.toString());
         }
     }
 }
