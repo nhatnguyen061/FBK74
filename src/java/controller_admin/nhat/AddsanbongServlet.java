@@ -102,7 +102,7 @@ public class AddsanbongServlet extends HttpServlet {
         int Price = Integer.parseInt(request.getParameter("fieldPrice"));
         Part file = request.getPart("fieldImage");
         String imageFileName = file.getSubmittedFileName();
-        String uploadPath = "D:/Java/FBK74/web/img_nhat/" + imageFileName;
+        String uploadPath = "D:/1_SWD392/FBK74/web/img_nhat/" + imageFileName;
         try {
             FileOutputStream fos = new FileOutputStream(uploadPath);
             InputStream is = file.getInputStream();
