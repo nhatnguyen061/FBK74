@@ -158,14 +158,14 @@
                                 <a href="HistoryServlet" class="dropdown-item">Giải đấu đã đăng ký</a>
                             </div>
                         </div>
-                        <div class="nav-item dropdown">
+                        <!-- <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">Khóa học</a>
                             <div class="dropdown-menu m-0">
                                 <a href="ListCourse" class="dropdown-item">Thông tin khóa học</a>
 
                                 <a href="CustomerCourse " class="dropdown-item">Khóa học của tôi</a>
                             </div>
-                        </div>
+                        </div> -->
                         <a href="contact.html" class="nav-item nav-link">Liên Hệ</a>
                     </div >
                     <a href="lichsuhoadon" class="icon-button">
@@ -197,18 +197,18 @@
         </nav>    
     <body>
           
-        <section class="container">
+        <!-- <section class="container">
             <h2 class="text-primary1"> Thông tin khóa học </h2>
              <img src="img_thuy/ban.png" alt="Quảng cáo bên trái" class="img-fluid"style=" height: 35vh; width: 100%; object-fit: cover;">
             <div class="row">
-<!--                <div class="col-md-1 d-none d-md-block">
+                <div class="col-md-1 d-none d-md-block">
                     <div class="advert-banner animate__animated animate__fadeIn">
                         <img src="img_thuy/thuyqc1.jpg" alt="Quảng cáo bên trái" class="img-fluid"style=" height: 20vh; width: 100%; object-fit: cover;">
                         <img src="img_thuy/thuyqc1.jpg" alt="Quảng cáo bên trái" class="img-fluid"style=" height: 20vh; width: 100%; object-fit: cover;">
                         <img src="img_thuy/thuyqc1.jpg" alt="Quảng cáo bên trái" class="img-fluid"style=" height: 20vh; width: 100%; object-fit: cover;">
                         <img src="img_thuy/thuyqc1.jpg" alt="Quảng cáo bên trái" class="img-fluid"style=" height: 20vh; width: 100%; object-fit: cover;">
                     </div>
-                </div>-->
+                </div>
                 <div class="col-md-12">
                     <div class="row">
                         <c:forEach var="course" items="${listCourse}">
@@ -235,7 +235,7 @@
                         </c:forEach>
                     </div>
                 </div>
-<!--                <div class="col-md-1 d-none d-md-block">
+                <div class="col-md-1 d-none d-md-block">
                     <div class="advert-banner animate__animated animate__fadeIn">
                         <img src="img_thuy/thuyqc2.jpg" alt="Quảng cáo bên phải" class="img-fluid" style=" height: 20vh; width: 100%; object-fit: cover;">
                         <img src="img_thuy/thuyqc2.jpg" alt="Quảng cáo bên phải" class="img-fluid"  style=" height: 20vh; width: 100%; object-fit: cover;">
@@ -243,9 +243,9 @@
                         <img src="img_thuy/thuyqc2.jpg" alt="Quảng cáo bên phải" class="img-fluid"style=" height: 20vh; width: 100%; object-fit: cover;">
                     </div>
 
-                </div>-->
+                </div>
             </div>
-        </section>
+        </section> -->
         <jsp:include page="common/footer.jsp" />
     </body>
 </html>

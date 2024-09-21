@@ -38,7 +38,7 @@
                         <a href="HistoryServlet" class="dropdown-item">Giải đấu đã đăng ký</a>
                     </div>
                 </div>
-                <a href="service.html" class="nav-item nav-link">Khóa Học Bóng Đá</a>
+                <!-- <a href="service.html" class="nav-item nav-link">Khóa Học Bóng Đá</a> -->
                 <a href="contact.html" class="nav-item nav-link">Liên Hệ</a>
             </div >
             <a href="lichsuhoadon" class="icon-button">

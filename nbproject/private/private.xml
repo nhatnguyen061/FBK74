@@ -3,45 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Java/FBK74/src/java/dao/BillDAO.java</file>
-            <file>file:/D:/Java/FBK74/src/java/controller_admin/nhat/DanhsachyeucauServlet.java</file>
-            <file>file:/D:/Java/FBK74/src/java/dao/RegistFindOpponentDAO.java</file>
-            <file>file:/D:/Java/FBK74/src/java/dao/ScheduleDAO.java</file>
-            <file>file:/D:/Java/FBK74/src/java/dao/RegisteredFootballFieldDAO.java</file>
-            <file>file:/D:/Java/FBK74/src/java/dao/StudyScheduleDAO.java</file>
-            <file>file:/D:/Java/FBK74/src/java/dao/ScheduleTournamentDAO.java</file>
-            <file>file:/D:/Java/FBK74/src/java/model/Role.java</file>
-            <file>file:/D:/Java/FBK74/src/java/model/Tournament.java</file>
-            <file>file:/D:/Java/FBK74/src/java/dao/ProductDAO.java</file>
-            <file>file:/D:/Java/FBK74/src/java/dao/FootballFieldScheduleDAO.java</file>
-            <file>file:/D:/Java/FBK74/src/java/controller_admin/nhat/DoanhthuServlet.java</file>
-            <file>file:/D:/Java/FBK74/src/java/dao/TeamDAO.java</file>
-            <file>file:/D:/Java/FBK74/src/java/dao/DBContext.java</file>
-            <file>file:/D:/Java/FBK74/src/java/model/YouthTrainingCourse.java</file>
-            <file>file:/D:/Java/FBK74/src/java/model/RegistFindOpponent.java</file>
-            <file>file:/D:/Java/FBK74/src/java/dao/YouthTrainingCourseDAO.java</file>
-            <file>file:/D:/Java/FBK74/src/java/model/FootballFieldSchedule.java</file>
-            <file>file:/D:/Java/FBK74/src/java/model/FootballField.java</file>
-            <file>file:/D:/Java/FBK74/src/java/model/MemberOfClass.java</file>
-            <file>file:/D:/Java/FBK74/src/java/dao/AdminDAO.java</file>
-            <file>file:/D:/Java/FBK74/src/java/model/TotalSchedule.java</file>
-            <file>file:/D:/Java/FBK74/src/java/model/StudySchedule.java</file>
-            <file>file:/D:/Java/FBK74/src/java/model/TeamMember.java</file>
-            <file>file:/D:/Java/FBK74/src/java/model/ClassEntity.java</file>
-            <file>file:/D:/Java/FBK74/src/java/dao/TournamentDAO.java</file>
-            <file>file:/D:/Java/FBK74/src/java/model/ScheduleTournament.java</file>
-            <file>file:/D:/Java/FBK74/src/java/controller_admin/nhat/Huythanhtoanbill.java</file>
-            <file>file:/D:/Java/FBK74/src/java/model/User.java</file>
-            <file>file:/D:/Java/FBK74/src/java/dao/ProductDetailDAO.java</file>
-            <file>file:/D:/Java/FBK74/src/java/model/Product.java</file>
-            <file>file:/D:/Java/FBK74/src/java/controller/LoginServlet.java</file>
-            <file>file:/D:/Java/FBK74/src/java/dao/UserDAO.java</file>
-            <file>file:/D:/Java/FBK74/src/java/model/RegisteredFootballField.java</file>
-            <file>file:/D:/Java/FBK74/web/admin/update-product_VA.jsp</file>
-            <file>file:/D:/Java/FBK74/src/java/dao/FootballFieldDAO.java</file>
-            <file>file:/D:/Java/FBK74/src/java/model/ProductDetail.java</file>
-            <file>file:/D:/Java/FBK74/src/java/dao/MemberOfClassDAO.java</file>
-            <file>file:/D:/Java/FBK74/src/java/dao/TotalScheduleDAO.java</file>
+            <file>file:/D:/SWD/FBK74/web/datsan_nhat.jsp</file>
+            <file>file:/D:/SWD/FBK74/web/css/style.css</file>
+            <file>file:/D:/SWD/FBK74/web/index.jsp</file>
         </group>
     </open-files>
 </project-private>

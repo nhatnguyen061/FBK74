@@ -90,7 +90,7 @@
         </style>
         <body>
             <jsp:include page="common/navbar.jsp" />
-            <div class="container-md">
+            <!-- <div class="container-md">
                 <h2 class="text-primary1"> Khóa học của tôi</h2>
                 <jsp:include page="common/Message.jsp" />
 
@@ -159,10 +159,9 @@
                                 </c:if>
                             </tr>
                         </c:forEach>
-                        <!-- Add more rows as needed -->
                     </tbody>
                 </table>
-            </div>
+            </div> -->
             <jsp:include page="common/footer.jsp" />
         </body>
     </html>
