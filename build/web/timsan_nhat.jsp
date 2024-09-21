@@ -191,9 +191,10 @@
                             </div>
                             <div class="text-center mt-3">
                                 <button type="submit" style="background-color: #ee1e46; color: #fff;" class="btn btn-primary px-5">Tìm kiếm</button>
+                                <a href="sandadat" style="background-color: #ee1e46; color: #fff;" class="btn btn-primary px-5">Sân đã đặt</a>
                             </div>
                             <div class="text-center mt-3">
-                                <a href="sandadat" style="background-color: #ee1e46; color: #fff;" class="btn btn-primary px-5">Sân đã đặt</a>
+                                
                             </div>
                         </form>
                     </div>

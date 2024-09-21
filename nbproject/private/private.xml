@@ -5,7 +5,9 @@
         <group>
             <file>file:/D:/SWD/FBK74/web/datsan_nhat.jsp</file>
             <file>file:/D:/SWD/FBK74/web/css/style.css</file>
-            <file>file:/D:/SWD/FBK74/web/index.jsp</file>
+            <file>file:/D:/SWD/FBK74/src/java/dao/DBContext.java</file>
+            <file>file:/D:/SWD/FBK74/web/timdoithu_duy.jsp</file>
+            <file>file:/D:/SWD/FBK74/src/java/controller_Duy/FindOpponent.java</file>
         </group>
     </open-files>
 </project-private>
