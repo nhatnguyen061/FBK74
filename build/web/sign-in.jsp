@@ -14,7 +14,7 @@
         }
 
         body {
-            background: #f6f5f7;
+            background: #c3c5c9;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -53,9 +53,11 @@
         }
 
         button {
+            position: relative;
+            z-index: 2;
             border-radius: 20px;
-            border: 1px solid #039a21;
-            background-color: #039a21;
+            border: 1px solid #000000;
+            background-color: #000;
             color: #FFFFFF;
             font-size: 12px;
             font-weight: bold;
@@ -74,8 +76,8 @@
         }
 
         button.ghost {
-            background-color: #039a21;
-            border-color: #FFFFFF;
+            background-color: #000;
+            top: 30%;
         }
 
         form {
@@ -173,7 +175,7 @@
         .overlay {
             background: #027513;
             background: -webkit-linear-gradient(to right, #027513, #2eef1d);
-            background: linear-gradient(to right, #026010, #3bbe27);
+            background: linear-gradient(to right, #ee1e46, #ee1e46);
             background-repeat: no-repeat;
             background-size: cover;
             background-position: 0 0;
@@ -220,6 +222,15 @@
 
         .container.right-panel-active .overlay-right {
             transform: translateX(20%);
+        }
+        
+        .overlay-image {
+                 width: 100%; /* Chiều rộng của hình ảnh */
+        height: auto; /* Giữ tỷ lệ hình ảnh */
+        position: absolute; /* Để định vị hình ảnh */
+        top: 0;
+        left: 0;
+        z-index: 1; /* Đưa hình ảnh ra sau */
         }
 
         .social-container {
@@ -324,13 +335,11 @@
         <div class="overlay-container">
             <div class="overlay">
                 <div class="overlay-panel overlay-left">
-                    <h1>FBK74 - Giao lưu không giới hạn</h1>
-                    <p>Nhập thông tin cá nhân của bạn và bắt đầu hành trình với chúng tôi</p>
+                    <img src="img/login-image.jpg" alt="Left Image" class="overlay-image" />
                     <button class="ghost" id="signIn">Đăng Nhập</button>
                 </div>
                 <div class="overlay-panel overlay-right">
-                    <h1>FBK74</h1>
-                    <p>Nhập thông tin cá nhân của bạn và bắt đầu hành trình với chúng tôi</p>
+                    <img src="img/login-image.jpg" alt="Right Image" class="overlay-image" />
                     <button class="ghost" id="signUp">Đăng Ký</button>
                 </div>
             </div>
