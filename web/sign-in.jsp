@@ -53,6 +53,8 @@
         }
 
         button {
+            position: relative;
+            z-index: 2;
             border-radius: 20px;
             border: 1px solid #ee1e46;
             background-color: #ee1e46;
@@ -220,6 +222,15 @@
 
         .container.right-panel-active .overlay-right {
             transform: translateX(20%);
+        }
+        
+        .overlay-image {
+                 width: 100%; /* Chiều rộng của hình ảnh */
+        height: auto; /* Giữ tỷ lệ hình ảnh */
+        position: absolute; /* Để định vị hình ảnh */
+        top: 0;
+        left: 0;
+        z-index: 1; /* Đưa hình ảnh ra sau */
         }
 
         .social-container {
