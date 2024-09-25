@@ -47,7 +47,6 @@ public class LoginServlet extends HttpServlet {
             if (authenticated && user.getRole() == 1) {
                 pageRedirect = "index.jsp";
             } else if (authenticated && (user.getRole() == 3 || user.getRole() == 2)) {
-//                pageRedirect = "admin?action=viewList";
                 pageRedirect = "admin/index1.jsp";
             }
             resp.sendRedirect(pageRedirect);
