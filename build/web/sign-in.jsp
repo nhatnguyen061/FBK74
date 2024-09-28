@@ -14,7 +14,7 @@
         }
 
         body {
-            background: #f6f5f7;
+            background: #fff;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -54,9 +54,9 @@
 
         button {
             border-radius: 20px;
-            border: 1px solid #039a21;
-            background-color: #039a21;
-            color: #FFFFFF;
+            border: 1px solid #ee1e46;
+            background-color: #ee1e46;
+            color: #fff;
             font-size: 12px;
             font-weight: bold;
             padding: 12px 45px;
@@ -74,12 +74,12 @@
         }
 
         button.ghost {
-            background-color: #039a21;
-            border-color: #FFFFFF;
+            background-color: #ee1e46;
+            border-color: #fff;
         }
 
         form {
-            background-color: #FFFFFF;
+            background-color: #fff;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -90,7 +90,7 @@
         }
 
         input {
-            background-color: #eee;
+            background-color: #fff;
             border: none;
             padding: 12px 15px;
             margin: 8px 0;
@@ -171,13 +171,13 @@
         }
 
         .overlay {
-            background: #027513;
-            background: -webkit-linear-gradient(to right, #027513, #2eef1d);
-            background: linear-gradient(to right, #026010, #3bbe27);
+            background: #ee1e46;
+            background: -webkit-linear-gradient(to right, #ee1e46, #85041e);
+            background: linear-gradient(to right, #ee1e46, #85041e);
             background-repeat: no-repeat;
             background-size: cover;
             background-position: 0 0;
-            color: #FFFFFF;
+            color: #fff;
             position: relative;
             left: -100%;
             height: 100%;
@@ -228,7 +228,7 @@
 
         .social-container a {
 
-            border: 1px solid #DDDDDD;
+            border: 1px solid #fff;
             border-radius: 50%;
             display: inline-flex;
             justify-content: center;
@@ -255,7 +255,7 @@
         }
 
         footer i {
-            color: red;
+            color: #ee1e46;
         }
 
         footer a {
@@ -264,79 +264,80 @@
         }
     </style>
 </head>
-<div class="container" id="container">
-    <h2>Đăng Nhập/Đăng Ký</h2>
+<div class="site-wrap">
     <div class="container" id="container">
-        <div class="form-container sign-up-container">
+        <h2>Đăng Nhập/Đăng Ký</h2>        
+        <div class="container" id="container">
+            <div class="form-container sign-up-container">
 
-            <form action="register" style="" method="post">
-                
-                <input class="form-control" type="text" placeholder="Name" name="name" required/>
-                <div id="name-message" style="color:red;font-size:11px"></div>
-                <input type="text" placeholder="Username" name="username" required/>
-                <input type="email" placeholder="Email" name="email" required/>
-                
-                <input type="text" placeholder="Phone" name="phone" required/>
-                <div id="phone-message" style="color:red;font-size:11px"></div>
-                <input type="password" placeholder="Password" name="password" id="password" required/>
-                <div id="password-message" style="color:red;font-size:11px"></div>
-                <input type="password" placeholder="Confirm password" name="repass" required/>
+                <form action="register" style="" method="post">
+                    
+                    <input class="form-control" type="text" placeholder="Name" name="name" required/>
+                    <div id="name-message" style="color:#ee1e46;font-size:11px"></div>
+                    <input type="text" placeholder="Username" name="username" required/>
+                    <input type="email" placeholder="Email" name="email" required/>
+                    
+                    <input type="text" placeholder="Phone" name="phone" required/>
+                    <div id="phone-message" style="color:#ee1e46;font-size:11px"></div>
+                    <input type="password" placeholder="Password" name="password" id="password" required/>
+                    <div id="password-message" style="color:#ee1e46;font-size:11px"></div>
+                    <input type="password" placeholder="Confirm password" name="repass" required/>
 
-                <select name="gender" style="width: 100%; padding: 12px 15px; margin: 8px 0; background-color: #eee; border: none;">
-                    <option value="" selected="true" disabled="true">Giới tính</option>
-                    <option value="1">Nam</option>
-                    <option value="0">Nữ</option>
-                </select>
-                <button type="submit" disabled="true">Đăng ký</button>
-            </form>
-        </div>
-        <div class="form-container sign-in-container">
-            <form action="login" method="post">
-                <c:if test="${not empty successMessage}">
-                    <h5 style="color:green">${successMessage}</h5>
-                </c:if>
-                <h1>Đăng nhập</h1>
+                    <select name="gender" style="width: 100%; padding: 12px 15px; margin: 8px 0; background-color: #eee; border: none;">
+                        <option value="" selected="true" disabled="true">Giới tính</option>
+                        <option value="1">Nam</option>
+                        <option value="0">Nữ</option>
+                    </select>
+                    <button type="submit" disabled="true">Đăng ký</button>
+                </form>
+            </div>
+            <div class="form-container sign-in-container">
+                <form action="login" method="post">
+                    <c:if test="${not empty successMessage}">
+                        <h5 style="color:#ee1e46">${successMessage}</h5>
+                    </c:if>
+                    <h1>Đăng nhập</h1>
 
-                <div class="social-container">
-                    <a href="https://www.facebook.com/dialog/oauth?client_id=1509092289871952&redirect_uri=http://localhost:8080/FBK74/login-facebook" class="social"
-                       style="
-                       background-color: navy;
-                       color: white;
-                       "><i class="fab fa-facebook-f"></i></a>
-                    <a href="<%= commons.GoogleUtils.getGoogleRedirectURL()%>" class="social"  style="
-                       background-color: red;
-                       color: white;
-                       "><i class="fab fa-google-plus-g"></i></a>
-                </div>
-                <span>Sử dụng tài khoản mạng xã hội</span>
-                <input type="UserName" placeholder="UserName" name="userName" required/>
+                    <div class="social-container">
+                        <a href="https://www.facebook.com/dialog/oauth?client_id=1509092289871952&redirect_uri=http://localhost:8080/FBK74/login-facebook" class="social"
+                        style="
+                        background-color: navy;
+                        color: #fff;
+                        "><i class="fab fa-facebook-f"></i></a>
+                        <a href="<%= commons.GoogleUtils.getGoogleRedirectURL()%>" class="social"  style="
+                        background-color: #ee1e46;
+                        color: #fff;
+                        "><i class="fab fa-google-plus-g"></i></a>
+                    </div>
+                    <span>Sử dụng tài khoản mạng xã hội</span>
+                    <input type="UserName" placeholder="UserName" name="userName" required/>
 
-                <input type="password" placeholder="Password" name="password" required/>
-                <c:if test="${not empty errorMessage}">
-                    <h5 style="color:red">${errorMessage}</h5>
-                </c:if>
-                <a href="reset_password">Quên Mật Khẩu?</a>
-                <button type="submit">Đăng nhập</button>
-            </form>
-        </div>
-        <h5 style="color:red">${errorMessage}</h5>
+                    <input type="password" placeholder="Password" name="password" required/>
+                    <c:if test="${not empty errorMessage}">
+                        <h5 style="color:#ee1e46">${errorMessage}</h5>
+                    </c:if>
+                    <a href="reset_password">Quên Mật Khẩu?</a>
+                    <button type="submit">Đăng nhập</button>
+                </form>
+            </div>
+            <h5 style="color:#ee1e46">${errorMessage}</h5>
 
-        <div class="overlay-container">
-            <div class="overlay">
-                <div class="overlay-panel overlay-left">
-                    <h1>FBK74 - Giao lưu không giới hạn</h1>
-                    <p>Nhập thông tin cá nhân của bạn và bắt đầu hành trình với chúng tôi</p>
-                    <button class="ghost" id="signIn">Đăng Nhập</button>
-                </div>
-                <div class="overlay-panel overlay-right">
-                    <h1>FBK74</h1>
-                    <p>Nhập thông tin cá nhân của bạn và bắt đầu hành trình với chúng tôi</p>
-                    <button class="ghost" id="signUp">Đăng Ký</button>
+            <div class="overlay-container">
+                <div class="overlay">
+                    <div class="overlay-panel overlay-left">
+                        <h1>FBK74 - Giao lưu không giới hạn</h1>
+                        <p>Nhập thông tin cá nhân của bạn và bắt đầu hành trình với chúng tôi</p>
+                        <button class="ghost" id="signIn">Đăng Nhập</button>
+                    </div>
+                    <div class="overlay-panel overlay-right">
+                        <h1>FBK74</h1>
+                        <p>Nhập thông tin cá nhân của bạn và bắt đầu hành trình với chúng tôi</p>
+                        <button class="ghost" id="signUp">Đăng Ký</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 </div>
 
 <script>

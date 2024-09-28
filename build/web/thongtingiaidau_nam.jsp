@@ -1,5 +1,11 @@
 <%@ page pageEncoding="UTF-8" contentType="text/html; charset = UTF-8" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page import="java.util.Arrays"%>
+<%@page import="java.util.List"%>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="model.FootballFieldSchedule" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib prefix = "fn" uri = "http://java.sun.com/jsp/jstl/functions" %>
 
 <html>
     <head>
@@ -8,215 +14,350 @@
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="Free HTML Templates" name="keywords">
         <meta content="Free HTML Templates" name="description">
-
         <!-- Favicon -->
         <link href="img/favicon.ico" rel="icon">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> 
         <!-- Google Web Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet">
-
         <!-- Icon Font Stylesheet -->
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-        <link rel="stylesheet"
-              href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
         <!-- Libraries Stylesheet -->
         <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
         <link href="lib/animate/animate.min.css" rel="stylesheet">
-
         <!-- Customized Bootstrap Stylesheet -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
-
         <!-- Template Stylesheet -->
         <link href="css/style.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="fonts/icomoon/style.css">
+        <link rel="stylesheet" href="css/bootstrap/bootstrap.css">
+        <link rel="stylesheet" href="css/jquery-ui.css">
+        <link rel="stylesheet" href="css/owl.carousel.min.css">
+        <link rel="stylesheet" href="css/owl.theme.default.min.css">
+        <link rel="stylesheet" href="css/owl.theme.default.min.css">
+        <link rel="stylesheet" href="css/jquery.fancybox.min.css">
+        <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+        <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+        <link rel="stylesheet" href="css/aos.css">
+        <link rel="stylesheet" href="css/style.css">
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <!--CSS Nhat-->
-        <!--<link rel="stylesheet" href="css/style_nam.css"/>-->
-        <style>
-            .banner {
-                background: url('img_nam/giaidaubanner.jpg') no-repeat center center;
-                background-size: cover;
-                height: 300px;
-                position: relative;
-            }
-            .register-button {
-                position: absolute;
-                top: 50%;
-                right: 15px;
-                transform: translateY(-50%);
-            }
-            .tournament-item {
-                margin-bottom: 30px;
-            }
-            .tournament-item img {
-                width: 100%;
-                height: 180px; /* Fixed height for uniformity */
-                object-fit: cover; /* Ensures images cover the area nicely */
-                border-radius: 5px;
-            }
-            .tournament-name {
-                text-align: center;
-                margin-top: 10px;
-                font-weight: bold;
-            }
-            .advert-banner {
-                background-color: #f8f9fa; /* Placeholder color */
-                border: 1px solid #ddd;
-                height: 100vh; /* Full height of the viewport */
-                position: sticky;
-                top: 0;
-            }
-            /* Responsive adjustments */
-            @media (max-width: 991.98px) {
-                .advert-banner {
-                    height: 300px; /* Adjust height for smaller screens */
-                    margin-bottom: 20px;
-                }
-            }
-        </style>
+        <link rel="stylesheet" href="css/style_nhat.css"/>
+        <!-- Include jQuery library -->
+
+        <!-- Include jQuery UI library with Datepicker widget -->
+        <link rel="stylesheet"
+            href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        <script>
+            $(document).ready(function () {
+            // Khởi tạo Datepicker với định dạng dd/MM/yyyy
+                $("#futureDate").datepicker({
+                    dateFormat: "dd/mm/yy", // Định dạng ngày
+                    changeMonth: true, // Cho phép thay đổi tháng
+                    changeYear: true,  // Cho phép thay đổi năm
+                    minDate: 0,        // Chỉ cho phép chọn ngày trong tương lai
+                    autoclose: true,    // Đóng Datepicker sau khi chọn
+                    todayHighlight: true
+                });
+            });            
+        </script>    
     </head>
 
     <body>
-        <!-- Navbar & Carousel Start -->
+        <div class="site-wrap">
+            <!-- Navbar -->
+            <div class="site-mobile-menu site-navbar-target">
+                <div class="site-mobile-menu-header">
+                    <div class="site-mobile-menu-close">
+                        <span class="icon-close2 js-menu-toggle"></span>
+                    </div>
+                </div>
+                <div class="site-mobile-menu-body"></div>
+            </div>        
+            <header class="site-navbar py-4" role="banner">
+                <div class="container">
+                    <div class="d-flex align-items-center">
+                        <div class="site-logo">
+                            <a href="index.jsp">
+                                <img src="images/logo.png" alt="Logo">
+                            </a>
+                        </div>
+                        <div class="ml-auto">
+                            <nav class="site-navigation position-relative text-right" role="navigation">
+                                <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
+                                    <li class=""><a href="index.jsp" class="nav-link">Trang Chủ</a></li>
+                                    <li class=""><a href="danhsachtimsan" class="nav-link">Tìm Sân</a></li>
+                                    <li class="active">
+                                        <div class="nav-item dropdown">
+                                            <a href="#" class="nav-link dropdown-toggle" style="color: #ee1e46" data-bs-toggle="dropdown">Tìm Đối Thủ</a>
+                                            <div class="dropdown-menu m-0">
+                                                <a href="regist-find-opponent?IDAccount=${sessionScope.account.IDAccount}" class="dropdown-item">Đăng ký làm đối thủ</a>
+                                                <a href="find-opponent" class="dropdown-item">Tìm kiếm đối thủ</a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="nav-item dropdown">
+                                            <a href="#" class="nav-link dropdown-toggle" style="color: #ee1e46" data-bs-toggle="dropdown">Giải Đấu</a>
+                                            <div class="dropdown-menu m-0">
+                                                <a href="tournaments" class="dropdown-item">Thông tin các giải đấu</a>
+                                                <a href="HistoryServlet" class="dropdown-item">Giải đấu đã đăng ký</a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="">
+                                            <c:if test="${sessionScope.account==null}">
+                                                <a href="login" style="color: #fff" class="nav-link">Login</a>                                                   
+                                            </c:if>
+                                            <c:if test="${sessionScope.account!=null}">
+                                                <div class="nav-item dropdown">
+                                                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Profile</a>
+                                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                                        <a class="dropdown-item" href="profile1">Update</a>
+                                                        <a class="dropdown-item" href="lichsuhoadon">History</a>
+                                                        <a class="dropdown-item" href="logout">Logout</a>                                                                
+                                                    </div>
+                                                </div>                                                        
+                                            </c:if>
+                                        </div>    
+                                    </li>                                            
+                                </ul>                                                        
+                            </nav>
+                            <a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black float-right text-white"><span
+                                class="icon-menu h3 text-white"></span></a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <!-- End Navbar -->
 
-        <jsp:include page="header_nam.jsp"/>
-
-        <!-- Navbar & Carousel End -->
-        <!--Content start-->
-        <div class="container-fluid">
-            <div class="row">
-                <!-- Left advertising banner -->
-                <jsp:include page="quangcaotrai_nam.jsp"/>
-
-                <!-- Main content -->
-                <div class="col-md-10">
-                    <div class="banner">
+            <div class="hero overlay" style="background-image: url('images/bg_3.jpg');">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-5 mx-auto text-center">
+                        <h1 class="text-white">Tournaments</h1>
+                        <p>Tham gia các giải đấu hàng đầu.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>         
+                            
+            <div class="container">    
+                <div class="row">
+                    <div class="col-lg-12">                
+                        <div class="d-flex team-vs">
+                            <span class="score">4-1</span>
+                            <div class="team-1 w-50">
+                                <div class="team-details w-100 text-center">
+                                    <img src="images/logo_1.png" alt="Image" class="img-fluid">
+                                    <h3>FPT University <span>(win)</span></h3>
+                                    <ul class="list-unstyled">
+                                        <li>Nhat Nguyen</li>
+                                        <li>Quang Trieu</li>
+                                        <li>L. Messi</li>
+                                        <li>C. Ronaldo</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="team-2 w-50">
+                                <div class="team-details w-100 text-center">
+                                    <img src="images/logo_2.png" alt="Image" class="img-fluid">
+                                    <h3>BK University <span>(loss)</span></h3>
+                                    <ul class="list-unstyled">
+                                        <li>Haaland</li>
+                                        <li>M. Salah</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+              
+            <div class="site-section bg-dark">
+                <div class="container">     
+                    <!-- Next match -->
+                    <div class="row mb-5">
+                        <div class="col-lg-12">
+                            <div class="widget-next-match">
+                                <div class="widget-title">
+                                    <h3>Next Match</h3>
+                                </div>
+                                <div class="widget-body mb-3">
+                                    <div class="widget-vs">
+                                        <div class="d-flex align-items-center justify-content-around justify-content-between w-100">
+                                            <div class="team-1 text-center">
+                                                <img src="images/logo_1.png" alt="Image">
+                                            <h3>FPT League</h3>
+                                            </div>
+                                            <div>
+                                                <span class="vs"><span>VS</span></span>
+                                            </div>
+                                            <div class="team-2 text-center">
+                                                <img src="images/logo_2.png" alt="Image">
+                                                <h3>SP League</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>                
+                                <div class="text-center widget-vs-contents mb-4">
+                                    <h4>World Cup League</h4>
+                                    <p class="mb-5">
+                                        <span class="d-block">Oct 20th, 2024</span>
+                                        <span class="d-block">9:30 AM GMT+0</span>
+                                    </p>                
+                                    <div id="date-countdown2" class="pb-1"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>       
+                    <div class="banner" style=" justify-content: center;">
                         <form action="./HistoryServlet" method="get">
-                            <input class="btn btn-primary register-button animate__animated animate__bounceIn" value="Giải đấu đã đăng ký" type="submit">
+                            <input style="color: #fff; background-color: #ee1e46;" class="btn btn-primary register-button animate__animated animate__bounceIn" value="Giải đấu đã đăng ký" type="submit">
                         </form>
                     </div>
                     <script>
                         function redirectToPage() {
                             window.location.href = "giaidaudadangky_nam.jsp";
                         }
-                    </script>
-                    <div class="row mt-4">
+                    </script>     
+                    <!-- Upcoming Match -->
+                    <div class="row">
+                        <div class="col-12 title-section">
+                            <h2 class="heading">List Tournaments</h2>
+                        </div>
                         <c:forEach items="${requestScope.list}" var="item">
-                            <div class="col-lg-4 col-md-6 col-sm-12 tournament-item">
-                                <a href="detail?id=${item.id}" class="animate__animated animate__zoomIn">
-                                    <!--<img src="${item.image}" alt="Giải đấu ${item.id}" class="img-fluid">-->
-                                    <img src="img_nam/${item.image}" alt="Giải đấu" style="height: 30vh; width: 100%; object-fit: cover;">
-                                    <div class="tournament-name">Giải Đấu ${item.name}</div>
-                                </a>
-                            </div>
-                        </c:forEach>
-
+                            <!-- Các ô giải đấu -->
+                            <div class="col-lg-6 mb-4">
+                                <div class="bg-light rounded overflow-hidden position-relative" style="height: 100%; display: flex; flex-direction: column;">
+                                    <!-- Đặt ảnh tràn viền -->
+                                    <a href="detail?id=${item.id}" class="animate__animated animate__zoomIn">
+                                        <img src="img_nam/${item.image}" alt="Giải đấu ${item.id}" style="width: 100%; height: auto; object-fit: cover;">
+                                    </a>
+                                    <!-- Tên giải đấu đặt trên ảnh, dùng vị trí tuyệt đối để đặt lên trên -->
+                                    <div class="tournament-name position-absolute" style="top: 10px; left: 10px; color: white; font-weight: bold; background: rgba(0, 0, 0, 0.5); padding: 5px 10px;">
+                                        ${item.name}
+                                    </div>
+                                    <!-- Thông tin chi tiết -->
+                                    <div class="p-4 text-center widget-vs-contents" style="margin-top: auto;">
+                                        <p class="mb-5">
+                                            <span class="d-block">Thời hạn đăng kí: ${item.timeCloseRegister}</span>
+                                            <span class="d-block">Thời gian bắt đầu: ${item.start}</span>
+                                            <strong class="text-primary">Giải thưởng: ${item.award}K VND</strong>
+                                        </p>                
+                                    </div>
+                                </div>
+                            </div>   
+                        </c:forEach>                
                     </div>
+                    
                 </div>
+            </div> <!-- .site-section -->
 
-                <!-- Right advertising banner -->
-                <jsp:include page="quangcaophai_nam.jsp"/>
-            </div>
-        </div>
-        <!--Content end-->
-        <!-- Footer Start -->
-        <div class="container-fluid bg-dark text-light mt-5 wow fadeInUp" data-wow-delay="0.1s">
-            <div class="container">
-                <div class="row gx-5">
-                    <div class="col-lg-4 col-md-6 footer-about">
-                        <div class="d-flex flex-column align-items-center justify-content-center text-center h-100 bg-primary p-4">
-                            <a href="index.html" class="navbar-brand">
-                                <h1 class="m-0 text-white"><i class="fa fa-user-tie me-2"></i>FBK74</h1>
-                            </a>
-                            <p class="mt-3 mb-4">Địa chỉ chuyên nghiệp dành cho mọi lứa tuổi, hãy cùng nhau trải nghiệm sân chơi đẳng cấp của chúng tôi ngay nhé.</p>
-                            <form action="">
-                                <div class="input-group">
-                                    <input type="text" class="form-control border-white p-3" placeholder="Your Email">
-                                    <button class="btn btn-dark">Sign Up</button>
+            <!--Content end-->
+            <footer class="footer-section">
+                <div data-wow-delay="0.1s">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6 footer-about">
+                            <div class="d-flex flex-column align-items-center justify-content-center text-center h-100 bg-primary p-4">
+                                <div class="site-logo">
+                                    <a href="index.jsp">
+                                        <img src="images/logo.png" alt="Logo">
+                                    </a>
                                 </div>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="col-lg-8 col-md-6">
-                        <div class="row gx-5">
-                            <div class="col-lg-4 col-md-12 pt-5 mb-5">
-                                <div class="section-title section-title-sm position-relative pb-3 mb-4">
-                                    <h3 class="text-light mb-0">Get In Touch</h3>
-                                </div>
-                                <div class="d-flex mb-2">
-                                    <i class="bi bi-geo-alt text-primary me-2"></i>
-                                    <p class="mb-0">78 Bình Kỳ, Ngũ Hành Sơn, Đà Nẵng</p>
-                                </div>
-                                <div class="d-flex mb-2">
-                                    <i class="bi bi-envelope-open text-primary me-2"></i>
-                                    <p class="mb-0">fbk74@gmail.com</p>
-                                </div>
-                                <div class="d-flex mb-2">
-                                    <i class="bi bi-telephone text-primary me-2"></i>
-                                    <p class="mb-0">+012 345 67890</p>
-                                </div>
-                                <div class="d-flex mt-4">
-                                    <a class="btn btn-primary btn-square me-2" href="#"><i class="fab fa-twitter fw-normal"></i></a>
-                                    <a class="btn btn-primary btn-square me-2" href="#"><i class="fab fa-facebook-f fw-normal"></i></a>
-                                    <a class="btn btn-primary btn-square me-2" href="#"><i class="fab fa-linkedin-in fw-normal"></i></a>
-                                    <a class="btn btn-primary btn-square" href="#"><i class="fab fa-instagram fw-normal"></i></a>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
-                                <div class="section-title section-title-sm position-relative pb-3 mb-4">
-                                    <h3 class="text-light mb-0">Quick Links</h3>
-                                </div>
-                                <div class="link-animated d-flex flex-column justify-content-start">
-                                    <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Trang Chủ</a>
-                                    <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Tìm Sân</a>
-                                    <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Tìm Đối Thủ</a>
-                                    <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Giải Đấu</a>
-                                    <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Khóa Học Bóng Đá</a>
-                                    <a class="text-light" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Liên Hệ</a>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
-                                <div class="section-title section-title-sm position-relative pb-3 mb-4">
-                                    <h3 class="text-light mb-0">Popular Links</h3>
-                                </div>
-                                <div class="link-animated d-flex flex-column justify-content-start">
-                                    <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Trang Chủ</a>
-                                    <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Tìm Sân</a>
-                                    <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Tìm Đối Thủ</a>
-                                    <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Giải Đấu</a>
-                                    <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Khóa Học Bóng Đá</a>
-                                    <a class="text-light" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Liên Hệ</a>
-                                </div>
+                                <p class="mt-3 mb-4">Địa chỉ chuyên nghiệp dành cho mọi lứa tuổi, hãy cùng nhau trải nghiệm sân chơi đẳng cấp của chúng tôi ngay nhé.</p>
+                                <form action="">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control border-white p-3" placeholder="Your Email">
+                                        <button class="btn btn-dark">Sign Up</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
-                    </div>
+                        <div class="col-lg-8 col-md-6">
+                            <div class="row gx-5">
+                                <div class="col-lg-4 col-md-12 pt-5 mb-5">
+                                    <div class="section-title section-title-sm position-relative pb-3 mb-4">
+                                        <h3 class="text-light mb-0">Get In Touch</h3>
+                                    </div>
+                                    <div class="d-flex mb-2">
+                                        <i class="bi bi-geo-alt text-primary me-2"></i>
+                                        <p class="mb-0">78 Bình Kỳ, Ngũ Hành Sơn, Đà Nẵng</p>
+                                    </div>
+                                    <div class="d-flex mb-2">
+                                        <i class="bi bi-envelope-open text-primary me-2"></i>
+                                        <p class="mb-0">fbk74@gmail.com</p>
+                                    </div>
+                                    <div class="d-flex mb-2">
+                                        <i class="bi bi-telephone text-primary me-2"></i>
+                                        <p class="mb-0">+012 345 67890</p>
+                                    </div>                                
+                                </div>
+                                <div class="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
+                                    <div class="section-title section-title-sm position-relative pb-3 mb-4">
+                                        <h3 class="text-light mb-0">Quick Links</h3>
+                                    </div>
+                                    <div class="link-animated d-flex flex-column justify-content-start">
+                                        <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Trang Chủ</a>
+                                        <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Tìm Sân</a>
+                                        <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Tìm Đối Thủ</a>
+                                        <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Giải Đấu</a>
+                                        <!-- <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Khóa Học Bóng Đá</a> -->
+                                        <a class="text-light" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Liên Hệ</a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
+                                    <div class="section-title section-title-sm position-relative pb-3 mb-4">
+                                        <h3 class="text-light mb-0">Social</h3>
+                                    </div>
+                                    <div class="link-animated d-flex flex-column justify-content-start">
+                                        <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Twitter</a>
+                                        <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Facebook</a>
+                                        <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Instagram</a>
+                                        <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Youtube</a>
+                                        <!-- <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Khóa Học Bóng Đá</a> -->
+                                        <a class="text-light" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Liên Hệ</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                    
+                    </div>                
                 </div>
             </div>
-        </div>
-        <div class="container-fluid text-white" style="background: #061429;">
-            <div class="container text-center">
-                <div class="row justify-content-end">
-                    <div class="col-lg-8 col-md-6">
-                        <div class="d-flex align-items-center justify-content-center" style="height: 75px;">
-                            <p class="mb-0">&copy; <a class="text-white border-bottom" href="#">Your Site Name</a>. All Rights Reserved. 
-
-                                <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-                                Designed by <a class="text-white border-bottom" href="https://htmlcodex.com">HTML Codex</a></p>
-                            <br>Distributed By: <a class="border-bottom" href="https://themewagon.com" target="_blank">ThemeWagon</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Footer End -->
-
-
-        <!-- Back to Top -->
-        <a href="timsan_nhat.jsp" class="btn btn-lg btn-primary btn-lg-square rounded back-to-top"><i class="bi bi-arrow-up"></i></a>
-
-
+            </footer>            
+        </div>        
+        <script>
+            function toggleDetails(row) {
+                const detailsCell = row.querySelector('.details');
+                detailsCell.classList.toggle('collapsed');
+            }
+        </script>
+        <script src="js/jquery-3.3.1.min.js"></script>
+        <script src="js/jquery-migrate-3.0.1.min.js"></script>
+        <script src="js/jquery-ui.js"></script>
+        <script src="js/popper.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/owl.carousel.min.js"></script>
+        <script src="js/jquery.stellar.min.js"></script>
+        <script src="js/jquery.countdown.min.js"></script>
+        <script src="js/bootstrap-datepicker.min.js"></script>
+        <script src="js/jquery.easing.1.3.js"></script>
+        <script src="js/aos.js"></script>
+        <script src="js/jquery.fancybox.min.js"></script>
+        <script src="js/jquery.sticky.js"></script>
+        <script src="js/jquery.mb.YTPlayer.min.js"></script>
         <!-- JavaScript Libraries -->
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -225,8 +366,10 @@
         <script src="lib/waypoints/waypoints.min.js"></script>
         <script src="lib/counterup/counterup.min.js"></script>
         <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-
-        <!-- Template Javascript -->
         <script src="js/main.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+        <script src="js/js_nhat.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     </body>
 </html>

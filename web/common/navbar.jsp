@@ -39,14 +39,14 @@
                                 <a href="HistoryServlet" class="dropdown-item">Giải đấu đã đăng ký</a>
                             </div>
                         </div>
-                        <div class="nav-item dropdown">
+                        <!-- <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">Khóa học</a>
                             <div class="dropdown-menu m-0">
                                 <a href="ListCourse" class="dropdown-item">Thông tin khóa học</a>
 
                                 <a href="CustomerCourse " class="dropdown-item">Khóa học của tôi</a>
                             </div>
-                        </div>
+                        </div> -->
                         <a href="contact.html" class="nav-item nav-link">Liên Hệ</a>
                     </div >
                     <a href="lichsuhoadon" class="icon-button">
