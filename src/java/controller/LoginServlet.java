@@ -28,8 +28,6 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String userName = req.getParameter("userName");
         String password = req.getParameter("password");
-        System.out.println(userName);
-        System.out.println(password);
         HttpSession session = req.getSession();
         boolean authenticated = authenticate(userName, password);
         String errorMessage = "Username or password incorrect !";
@@ -37,19 +35,25 @@ public class LoginServlet extends HttpServlet {
         UserDAO userDAO = new UserDAO();
         // get user info
         User user = userDAO.getUserByUserName(userName);
-        //check user info get role neu role = 1 thi k cho login.
-        if (user.getStatus() == 1) {
-            errorMessage = "Your are not allow to login in this site";
+
+        if (user == null) {
             req.setAttribute("errorMessage", errorMessage);
             req.getRequestDispatcher(pageRedirect).forward(req, resp);
         } else {
-            session.setAttribute("account", user);
-            if (authenticated && user.getRole() == 1) {
-                pageRedirect = "index.jsp";
-            } else if (authenticated && (user.getRole() == 3 || user.getRole() == 2)) {
-                pageRedirect = "admin/index1.jsp";
+            //check user info get role neu role = 1 thi k cho login.
+            if (user.getStatus() == 1) {
+                errorMessage = "Your are not allow to login in this site";
+                req.setAttribute("errorMessage", errorMessage);
+                req.getRequestDispatcher(pageRedirect).forward(req, resp);
+            } else {
+                session.setAttribute("account", user);
+                if (authenticated && user.getRole() == 1) {
+                    pageRedirect = "index.jsp";
+                } else if (authenticated && (user.getRole() == 3 || user.getRole() == 2)) {
+                    pageRedirect = "admin/index1.jsp";
+                }
+                resp.sendRedirect(pageRedirect);
             }
-            resp.sendRedirect(pageRedirect);
         }
 
     }
